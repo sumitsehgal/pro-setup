@@ -1,0 +1,49 @@
+<header class="header">
+    <div class="nav-main left">
+        <a href="#" class="brand"><img src="assets/images/logo.png" alt=""></a>
+        <ul class="link">
+            <li><a href="#" class="icon"><i class="fas fa-camera"></i></a></li>
+            <li class="d-none d-md-block"><a href="#">Printed</a></li>
+            <li class="d-none d-md-block"><a href="#">Space</a></li>
+            <li class="d-none d-md-block"><a [routerLink]="['/create-request2']" >Create Page</a></li>
+            <li class="more"><a href="#" class="icon"><i class="fas fa-plus"></i></a></li>
+        </ul>
+    </div>
+    <div id="nav-icon" class="nav-icon"><span></span>
+    </div>
+    <div class="nav-main right">
+        <div class="search-top d-none d-md-flex">
+            <span class="icon"><i class="fas fa-search"></i></span>
+            <input type="text" placeholder="Search">
+        </div>
+        
+        <a href="#" class="user-link"><img src="assets/images/user.png" alt=""></a>
+        <ul class="link">
+            <li>
+                <a [routerLink]="['/chat']" class="icon"><i class="fas fa-comment-dots"></i></a>
+            </li>
+            <li>
+                <a href="javascript:void(0);" id="callnotibox" class="icon"><i class="fas fa-bell"></i></a>
+            </li>
+        </ul>
+        <div class="noti-box shadow" id="noti-box">
+            <div class="head">
+                <h2>NOTIFICATIONS</h2> <a href="#" class="activity">ACTIVITY</a>
+            </div>
+            <div class="body">
+                <span class="no-noti">No notifications</span>
+                <a [routerLink]="['/notifications']" class="see-all-noti">See all notifications</a>
+            </div>
+        </div>
+    </div>
+    <div class="nav-main mob-nav" id="mob-nav">
+        <ul class="link">
+            <li><a href="#">Printed</a></li>
+            <li><a href="#">Space</a></li>
+        </ul>
+        <div class="search-top">
+            <span class="icon"><i class="fas fa-search"></i></span>
+            <input type="text" placeholder="Search">
+        </div>
+    </div>
+  </header>

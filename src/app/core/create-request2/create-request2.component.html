@@ -1,0 +1,65 @@
+
+<section class="wrap-create">
+    <div class="create-img">
+        <div class="box">
+            <div class="d-flex justify-content-between">
+                <h3>Views</h3><span class="icon"><i class="fas fa-chart-line"></i></span>
+            </div>
+            <h2>3</h2>
+            <div class="pos"><i class="fas fa-arrow-up"></i></div>
+        </div>
+       
+        <div class="img-bar">
+
+            <div class="image" *ngFor="let item of images; let i=index;" >
+                <img src="{{item}}" alt="" class="image-child" (dblclick)="selectImage($event, i)" >
+                <!-- <img src="{{item}}" alt="" id="image{{i}}" style="position: absolute;visibility:hidden;width:100%;"> -->
+            </div>
+
+        </div>
+    </div>
+    <div class="img-edit">
+        <div class="selected-image">
+            <div id="sketch-holder"></div>
+        </div>
+        <a href="javascript:void(0);" (click)="setCutouts()">Cutout</a>
+    </div>
+    <div class="img-settings"  *ngIf="selectedObj">
+        <div class="img-edit-list">
+            <ul>
+                <li class="active"><a href="#"><i class="far fa-image"></i></a></li>
+                <li><a href="#"><i class="fas fa-cut"></i></a></li>
+                <li><a href="#"><i class="fas fa-adjust"></i></a></li>
+                <li><a href="#"><i class="fas fa-adjust flip"></i></a></li>
+                <li><a href="#"><i class="fas fa-magic"></i></a></li>
+            </ul>
+        </div>
+        <div class="edit-adjust">
+            <div class="adjust">
+                <div class="icon"><i class="fas fa-chess-board"></i></div>
+                <div class="range">
+                    <input class="slider" type="range" min="0" max="100"  [(ngModel)]="light" (change)="onSliderChange()" >
+                    <div class="fill" style="width: {{light}}%;"></div>
+                </div>
+                <div class="count"><span class="val">{{light}}</span>%</div>
+            </div>
+           <!--   <div class="adjust">
+                <div class="icon"><i class="fas fa-chess-board"></i></div>
+                <div class="range">
+                    <input class="slider" type="range" min="0" max="100" [(ngModel)]="shadow" (change)="onSliderChange()" >
+                    <div class="fill" style="width: {{shadow}}%;"></div>
+                </div>
+                <div class="count"><span class="val">{{shadow}}</span>%</div>
+            </div>
+           <div class="adjust">
+                <div class="icon"><i class="fas fa-drafting-compass"></i></div>
+                <div class="range">
+                    <input class="slider" type="range" min="0" max="100"  >
+                    <div class="fill" style="width: 0%;"></div>
+                </div>
+                <div class="count"><span class="val">0</span>%</div>
+            </div> -->
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,91 @@
+
+<section class="wrap-create">
+    <div class="create-img">
+        <div class="box">
+            <div class="d-flex justify-content-between">
+                <h3>Views</h3><span class="icon"><i class="fas fa-chart-line"></i></span>
+            </div>
+            <h2>3</h2>
+            <div class="pos"><i class="fas fa-arrow-up"></i></div>
+        </div>
+       
+        <div class="img-bar">
+            <!-- <div *ngFor="let item of images" class="image" [ngClass]="{selected: item.selected}" (click)="onImgSelect(item)" >
+                <img src="{{item.originalbase64code}}" alt="">
+            </div> -->
+
+            <div class="image" *ngFor="let item of images; let i=index;" >
+                <img src="{{item}}" alt="" class="image-child">
+                <img src="{{item}}" alt="" id="image{{i}}" style="position: absolute;visibility:hidden;width:100%;">
+            </div>
+
+        </div>
+    </div>
+    <div class="img-edit">
+        <div class="selected-image">
+            <div id="sketch-holder"></div>
+        </div>
+    </div>
+    <div class="img-settings"  *ngIf="selectedImage">
+        <div class="img-edit-list">
+            <ul>
+                <li class="active"><a href="#"><i class="far fa-image"></i></a></li>
+                <li><a href="#"><i class="fas fa-cut"></i></a></li>
+                <li><a href="#"><i class="fas fa-adjust"></i></a></li>
+                <li><a href="#"><i class="fas fa-adjust flip"></i></a></li>
+                <li><a href="#"><i class="fas fa-magic"></i></a></li>
+            </ul>
+        </div>
+        <div class="edit-adjust">
+            <div class="adjust">
+                <div class="icon"><i class="fas fa-chess-board"></i></div>
+                <div class="range">
+                    <input class="slider" type="range" min="0" max="100" >
+                    <div class="fill" style="width: {{lighting}}%;"></div>
+                </div>
+                <div class="count"><span class="val">{{lighting}}</span>%</div>
+            </div>
+            <div class="adjust">
+                <div class="icon"><i class="fas fa-chess-board"></i></div>
+                <div class="range">
+                    <input class="slider" type="range" min="0" max="100"  >
+                    <div class="fill" style="width: {{shadow}}%;"></div>
+                </div>
+                <div class="count"><span class="val">{{shadow}}</span>%</div>
+            </div>
+            <div class="adjust">
+                <div class="icon"><i class="fas fa-drafting-compass"></i></div>
+                <div class="range">
+                    <input class="slider" type="range" min="0" max="100"  >
+                    <div class="fill" style="width: {{contrast}}%;"></div>
+                </div>
+                <div class="count"><span class="val">{{contrast}}</span>%</div>
+            </div>
+            
+            <!-- <div class="adjust">
+                <div class="icon"></div>
+                <div class="range">
+                    <input class="slider" type="range" min="0" max="100" value="55">
+                    <div class="fill" style="width: 55%;"></div>
+                </div>
+                <div class="count"><span class="val">55</span>*</div>
+            </div>
+            <div class="adjust">
+                <div class="icon"></div>
+                <div class="range">
+                    <input class="slider" type="range" min="0" max="100" value="55">
+                    <div class="fill" style="width: 55%;"></div>
+                </div>
+                <div class="count"><span class="val">55</span>*</div>
+            </div>
+            <div class="adjust">
+                <div class="icon blue"><i class="fas fa-expand-alt"></i></div>
+                <div class="range">
+                    <input class="slider" type="range" min="0" max="100" value="55">
+                    <div class="fill" style="width: 55%;"></div>
+                </div>
+                <div class="count"><span class="val">55</span>*</div>
+            </div> -->
+        </div>
+    </div>
+</section>
