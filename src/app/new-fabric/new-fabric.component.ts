@@ -27,6 +27,7 @@ export class NewFabricComponent implements OnInit {
     this.images.forEach((value, key) => {
       const img = new Image();
       img.src = value.url;
+      img.setAttribute('id', value.type);
       this.imagesObjs.push(img);
     });
 
@@ -47,7 +48,6 @@ export class NewFabricComponent implements OnInit {
   selectImage(event, i) {
     const componentThis = this;
     componentThis.addImage(componentThis.imagesObjs[i], i);
-
   }
 
   merge() {
@@ -56,8 +56,11 @@ export class NewFabricComponent implements OnInit {
       myObjs.push(obj);
     });
     this.canvas = this.canvas.clear();
-    const newImgArr = [new fabric.Group([myObjs[1], myObjs[2]]), new fabric.Group([myObjs[3], myObjs[4]]), myObjs[0]];
-    console.log(newImgArr);
+    const newImgArr = [
+      new fabric.Group(myObjs.filter(obj => obj._element.id === 'slice')),
+      new fabric.Group(myObjs.filter(obj => obj._element.id === 'wall')),
+      myObjs.find(obj => obj._element.id === 'product')
+    ];
     newImgArr.forEach((imgObj, j) => {
       if (j === 0) { // merged cutout
         this.canvas.add(imgObj);
