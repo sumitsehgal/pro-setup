@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { fabric } from "fabric";
+import { fabric } from 'fabric';
 import { ImageService } from '../core/image.service';
 
 @Component({
@@ -13,10 +13,10 @@ export class FabricComponent implements OnInit {
   images = [];
   imagesObjs: any = [];
   canvas: any;
-  selectedImage: boolean = false;
+  selectedImage = false;
   selectedObj: any = false;
-  light: number = 0;
-  shadow: number = 0;
+  light = 0;
+  shadow = 0;
 
   constructor(private imageService: ImageService) { }
 
@@ -24,16 +24,16 @@ export class FabricComponent implements OnInit {
 
     this.images = this.imageService.getImagesPath();
 
-    this.images.forEach((value, key)=>{
+    this.images.forEach((value, key) => {
       this.imagesObjs[key] = new Image();
       this.imagesObjs[key].src = value;
-    })
+    });
 
-  
-    this.canvas = new fabric.Canvas('canvas',{
+
+    this.canvas = new fabric.Canvas('canvas', {
       backgroundColor: 'rgb(100,100,200)',
     });
- 
+
     // var rect = new fabric.Rect({
     //     top : 100,
     //     left : 100,
@@ -51,28 +51,52 @@ export class FabricComponent implements OnInit {
     // });
 
     // canvas.add(rect, rect1);
-  
+
   }
 
   addImage(imageObj, i) {
     console.log(i);
-    let img = new fabric.Image( imageObj, {})
+    const img = new fabric.Image(imageObj, {});
     img.scaleToWidth(500);
     img.scaleToHeight(400);
 
-    // console.log(imageObj);
-    if(i == 0 ){ // Product 
-      img.globalCompositeOperation = "source-in";
-    }else if(i ==1){ // Cutout
-      // img.globalCompositeOperation="source-atop"
-    }else if(i == 2) { // Pattern
-      img.globalCompositeOperation = "destination-out";
+    console.log(imageObj);
+    // if (i === 0 ) { // Product
+    //   img.globalCompositeOperation = 'source-in';
+    // } else if (i === 1) { // Cutout
+    //   // img.globalCompositeOperation="source-atop"
+    // } else if (i === 2) { // Pattern
+    //   img.globalCompositeOperation = 'destination-out';
+    // }
+
+    if (i === 2) {
+      this.canvas = this.canvas.clear();
+      const newImgArr = [this.imagesObjs[1], this.imagesObjs[2], this.imagesObjs[0]];
+      console.log(newImgArr);
+      newImgArr.forEach((imgObj, j) => {
+        const canImg = new fabric.Image(imgObj, {});
+        canImg.scaleToWidth(500);
+        canImg.scaleToHeight(400);
+        if (j === 0) { // Product
+        } else if (j === 1) { // Cutout
+          canImg.globalCompositeOperation = 'source-in';
+          // canImg.globalCompositeOperation = 'source-atop';
+        } else if (j === 2) { // Pattern
+          canImg.globalCompositeOperation = 'destination-atop';
+        }
+        this.canvas.add(canImg);
+      });
+    } else {
+      this.canvas.add(img);
+      // console.log(this.canvas);
+      // this.canvas.clear();
+      // console.log(this.canvas);
     }
 
-    this.canvas.add(img)    
-   // this.productImages.push(imageObj)
+
+    // this.productImages.push(imageObj)
     // const image = this.kovaImg.image(imageObj);
-    
+
     // this.layer.add(image);
 
     // this.allCanvasObjs.push(image);
@@ -94,14 +118,14 @@ export class FabricComponent implements OnInit {
   }
 
   selectImage(event, i) {
-    let componentThis = this;
+    const componentThis = this;
     // let newImageObj = new Image();
     // newImageObj.onload = function () {
     //   componentThis.addImage(newImageObj);
     // };
     // newImageObj.src = imgSrc;
     componentThis.addImage(componentThis.imagesObjs[i], i);
-    
+
   }
 
 

@@ -20,9 +20,43 @@ export class ImageService {
     // 'assets/images/p4.jpg',
     // 'assets/images/shadow-100.png',
   ];
+
+  images2 = [
+    {
+      type: 'product',
+      url: 'assets/images/product2/product.png',
+      coords: null,
+      size: null,
+    },
+    {
+      type: 'slice 1',
+      url: 'assets/images/product2/slice-1.png',
+      coords: null,
+      size: null,
+    },
+    {
+      type: 'slice 2',
+      url: 'assets/images/product2/slice-2.png',
+      coords: null,
+      size: null,
+    },
+    {
+      type: 'wall 1',
+      url: 'assets/images/p4.jpg',
+      coords: null,
+      size: null,
+    },
+    {
+      type: 'wall 2',
+      url: 'assets/images/p3.jpg',
+      coords: null,
+      size: null,
+    },
+  ];
+
   baseImages: any;
 
-  imagesChanged = new Subject<ImageModel[]>()
+  imagesChanged = new Subject<ImageModel[]>();
 
   constructor() { }
 
@@ -30,34 +64,38 @@ export class ImageService {
     return this.images;
   }
 
+  getImagesPath2() {
+    return this.images2;
+  }
+
   getImages() {
     // If need to convert to base64
 
-    let newImages = this.images.map((imgUrl)=>{
-     return this.convertToBase64(imgUrl)
+    const newImages = this.images.map((imgUrl) => {
+     return this.convertToBase64(imgUrl);
     });
-    
+
     return newImages;
 
   }
 
   async convertToBase64(imgUrl: string) {
-    let promise = new Promise((resolve, reject)=>{
-      this.toDataUrl(imgUrl, (myBase64)=>{
+    const promise = new Promise((resolve, reject) => {
+      this.toDataUrl(imgUrl, (myBase64) => {
         resolve(myBase64);
-      })
-    })
+      });
+    });
     return await promise;
-      
+
   }
 
   toDataUrl(url, callback) {
-    var xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.onload = function() {
-        var reader = new FileReader();
+        const reader = new FileReader();
         reader.onloadend = function() {
             callback(reader.result);
-        }
+        };
         reader.readAsDataURL(xhr.response);
     };
     xhr.open('GET', url);

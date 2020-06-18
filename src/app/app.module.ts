@@ -7,13 +7,15 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CoreModule } from './core/core.module';
 import { FabricComponent } from './fabric/fabric.component';
+import { NewFabricComponent } from './new-fabric/new-fabric.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     PageNotFoundComponent,
-    FabricComponent
+    FabricComponent,
+    NewFabricComponent
   ],
   imports: [
     BrowserModule,

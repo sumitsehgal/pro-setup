@@ -1,3 +1,4 @@
+import { NewFabricComponent } from './new-fabric/new-fabric.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -26,8 +27,8 @@ const routes: Routes = [
   { path: 'controls-manage', component: ControlsManageComponent },
   { path: 'demo', component: DemoComponent },
   { path: 'fabric', component: FabricComponent },
+  { path: 'fabric2', component: NewFabricComponent },
   { path: '**', component: PageNotFoundComponent }
-  
 ];
 
 /*const routes: Routes = [
