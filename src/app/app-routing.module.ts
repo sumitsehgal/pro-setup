@@ -13,6 +13,7 @@ import { StatisticsComponent } from './core/statistics/statistics.component';
 import { ControlManageComponent } from './core/control-manage/control-manage.component';
 import { ControlsManageComponent } from './core/controls-manage/controls-manage.component';
 import { FabricComponent } from './fabric/fabric.component';
+import { SpaceComponent } from './core/space/space.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'controls-manage', component: ControlsManageComponent },
   { path: 'demo', component: DemoComponent },
   { path: 'fabric', component: FabricComponent },
+  { path: 'space', component: SpaceComponent },
   { path: '**', component: PageNotFoundComponent }
   
 ];

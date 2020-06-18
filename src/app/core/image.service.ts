@@ -8,6 +8,15 @@ import { ImageModel } from '../image.model';
 })
 export class ImageService {
 
+  jsonData: any;
+
+  spaceImages = [
+    'assets/images/product.jpg',
+    'assets/images/wall-1-layer.png',
+    'assets/images/wall-2-layer.png',
+    'assets/images/wall-2-shadow.png'
+  ]
+
   images = [
     'assets/images/grand-orinoco.png',
     'assets/images/slice1.png',
@@ -26,7 +35,19 @@ export class ImageService {
 
   constructor() { }
 
-  getImagesPath() {
+  setJson(jsonval) {
+    this.jsonData = jsonval;
+  }
+
+  getJason() {
+    return this.jsonData;
+  }
+
+  getImagesPath(imgType = "normal") {
+    if(imgType == "space") {
+      return this.spaceImages;
+    }
+
     return this.images;
   }
 

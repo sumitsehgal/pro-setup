@@ -54,44 +54,82 @@ export class FabricComponent implements OnInit {
   
   }
 
+  // addImage(imageObj, i) {
+  //   console.log(i);
+  //   let img = new fabric.Image( imageObj, {})
+  //   img.scaleToWidth(500);
+  //   img.scaleToHeight(400);
+
+  //   // console.log(imageObj);
+  //   if(i == 0 ){ // Product 
+  //     img.globalCompositeOperation = "source-in";
+  //   }else if(i ==1){ // Cutout
+  //     // img.globalCompositeOperation="source-atop"
+  //   }else if(i == 2) { // Pattern
+  //     img.globalCompositeOperation = "destination-out";
+  //   }
+
+  //   this.canvas.add(img)    
+  //  // this.productImages.push(imageObj)
+  //   // const image = this.kovaImg.image(imageObj);
+    
+  //   // this.layer.add(image);
+
+  //   // this.allCanvasObjs.push(image);
+
+  //   // this.tr.nodes([image])
+  //   // this.layer.draw();
+
+  //   // var customThis = this;
+  //   // customThis.selectedObj = image;
+  //   // image.on('click', function() {
+  //   //   customThis.tr.nodes([image]);
+  //   //   customThis.selectedObj = image;
+  //   // });
+
+  //   // this.layer.add(this.tr);
+  //   // this.layer.draw();
+  //   // this.stage.add(this.layer);
+
+  // }
+
   addImage(imageObj, i) {
     console.log(i);
-    let img = new fabric.Image( imageObj, {})
+    const img = new fabric.Image(imageObj, {});
     img.scaleToWidth(500);
     img.scaleToHeight(400);
-
-    // console.log(imageObj);
-    if(i == 0 ){ // Product 
-      img.globalCompositeOperation = "source-in";
-    }else if(i ==1){ // Cutout
-      // img.globalCompositeOperation="source-atop"
-    }else if(i == 2) { // Pattern
-      img.globalCompositeOperation = "destination-out";
+    console.log(imageObj);
+    // if (i === 0 ) { // Product
+    //   img.globalCompositeOperation = 'source-in';
+    // } else if (i === 1) { // Cutout
+    //   // img.globalCompositeOperation="source-atop"
+    // } else if (i === 2) { // Pattern
+    //   img.globalCompositeOperation = 'destination-out';
+    // }
+    if (i === 2) {
+      this.canvas = this.canvas.clear();
+      const newImgArr = [this.imagesObjs[1], this.imagesObjs[2], this.imagesObjs[0]];
+      console.log(newImgArr);
+      newImgArr.forEach((imgObj, j) => {
+        const canImg = new fabric.Image(imgObj, {});
+        canImg.scaleToWidth(500);
+        canImg.scaleToHeight(400);
+        if (j === 0) { // Product
+        } else if (j === 1) { // Cutout
+          canImg.globalCompositeOperation = 'source-in';
+          // canImg.globalCompositeOperation = 'source-atop';
+        } else if (j === 2) { // Pattern
+          canImg.globalCompositeOperation = 'destination-atop';
+        }
+        this.canvas.add(canImg);
+      });
+    } else {
+      this.canvas.add(img);
+      // console.log(this.canvas);
+      // this.canvas.clear();
+      // console.log(this.canvas);
     }
-
-    this.canvas.add(img)    
-   // this.productImages.push(imageObj)
-    // const image = this.kovaImg.image(imageObj);
-    
-    // this.layer.add(image);
-
-    // this.allCanvasObjs.push(image);
-
-    // this.tr.nodes([image])
-    // this.layer.draw();
-
-    // var customThis = this;
-    // customThis.selectedObj = image;
-    // image.on('click', function() {
-    //   customThis.tr.nodes([image]);
-    //   customThis.selectedObj = image;
-    // });
-
-    // this.layer.add(this.tr);
-    // this.layer.draw();
-    // this.stage.add(this.layer);
-
-  }
+}
 
   selectImage(event, i) {
     let componentThis = this;

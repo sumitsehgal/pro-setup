@@ -14,11 +14,12 @@ import { DemoComponent } from './demo/demo.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { ControlManageComponent } from './control-manage/control-manage.component';
 import { ControlsManageComponent } from './controls-manage/controls-manage.component';
+import { SpaceComponent } from './space/space.component';
 
 
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, CreateHeaderComponent, HomeComponent, CreateRequestComponent, CreateRequest2Component, ChatComponent, NotificationComponent, DemoComponent, StatisticsComponent, ControlManageComponent, ControlsManageComponent],
+  declarations: [HeaderComponent, FooterComponent, CreateHeaderComponent, HomeComponent, CreateRequestComponent, CreateRequest2Component, ChatComponent, NotificationComponent, DemoComponent, StatisticsComponent, ControlManageComponent, ControlsManageComponent, SpaceComponent],
   imports: [
     CommonModule,
     FormsModule,
