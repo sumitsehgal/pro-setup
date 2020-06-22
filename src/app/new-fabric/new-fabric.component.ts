@@ -59,7 +59,8 @@ export class NewFabricComponent implements OnInit {
     const newImgArr = [
       new fabric.Group(myObjs.filter(obj => obj._element.id === 'slice')),
       new fabric.Group(myObjs.filter(obj => obj._element.id === 'wall')),
-      myObjs.find(obj => obj._element.id === 'product')
+      myObjs.find(obj => obj._element.id === 'product'),
+      new fabric.Group(myObjs.filter(obj => obj._element.id === 'light' || obj._element.id === 'shadow')),
     ];
     newImgArr.forEach((imgObj, j) => {
       if (j === 0) { // merged cutout
@@ -69,6 +70,9 @@ export class NewFabricComponent implements OnInit {
         this.canvas.add(imgObj);
       } else if (j === 2) { // product
         imgObj.globalCompositeOperation = 'destination-atop';
+        this.canvas.add(imgObj);
+      } else if (j === 3) { // lights and shadows
+        imgObj.globalCompositeOperation = 'source-over';
         this.canvas.add(imgObj);
       }
     });

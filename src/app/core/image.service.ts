@@ -52,6 +52,30 @@ export class ImageService {
       coords: null,
       size: null,
     },
+    {
+      type: 'light',
+      url: 'assets/images/product2/light-wall-1.png',
+      coords: null,
+      size: null,
+    },
+    {
+      type: 'light',
+      url: 'assets/images/product2/light-wall-2.png',
+      coords: null,
+      size: null,
+    },
+    {
+      type: 'shadow',
+      url: 'assets/images/product2/shadow-wall-1.png',
+      coords: null,
+      size: null,
+    },
+    {
+      type: 'shadow',
+      url: 'assets/images/product2/shadow-wall-2.png',
+      coords: null,
+      size: null,
+    },
   ];
 
   baseImages: any;
@@ -72,7 +96,7 @@ export class ImageService {
     // If need to convert to base64
 
     const newImages = this.images.map((imgUrl) => {
-     return this.convertToBase64(imgUrl);
+      return this.convertToBase64(imgUrl);
     });
 
     return newImages;
@@ -91,29 +115,29 @@ export class ImageService {
 
   toDataUrl(url, callback) {
     const xhr = new XMLHttpRequest();
-    xhr.onload = function() {
-        const reader = new FileReader();
-        reader.onloadend = function() {
-            callback(reader.result);
-        };
-        reader.readAsDataURL(xhr.response);
+    xhr.onload = function () {
+      const reader = new FileReader();
+      reader.onloadend = function () {
+        callback(reader.result);
+      };
+      reader.readAsDataURL(xhr.response);
     };
     xhr.open('GET', url);
     xhr.responseType = 'blob';
     xhr.send();
   }
 
-/*  jimpObject(image:ImageModel)  {
-    if(image.originalbase64code) {
-      if(image.originalbase64code.indexOf('base64') != -1) {
-
-        if(image.originalbase64code.indexOf('png') != -1){
-          return jimp.read(Buffer.from(image.originalbase64code.replace(/^data:image\/png;base64,/, ""), 'base64'))
-        }else if(image.base64code.indexOf('jpeg') != -1) {
-          return jimp.read(Buffer.from(image.originalbase64code.replace(/^data:image\/jpeg;base64,/, ""), 'base64'))
+  /*  jimpObject(image:ImageModel)  {
+      if(image.originalbase64code) {
+        if(image.originalbase64code.indexOf('base64') != -1) {
+  
+          if(image.originalbase64code.indexOf('png') != -1){
+            return jimp.read(Buffer.from(image.originalbase64code.replace(/^data:image\/png;base64,/, ""), 'base64'))
+          }else if(image.base64code.indexOf('jpeg') != -1) {
+            return jimp.read(Buffer.from(image.originalbase64code.replace(/^data:image\/jpeg;base64,/, ""), 'base64'))
+          }
         }
       }
     }
-  }
-*/
+  */
 }
