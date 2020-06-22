@@ -38,8 +38,8 @@ export class NewFabricComponent implements OnInit {
   addImage(imageObj, i) {
     console.log(i);
     const img = new fabric.Image(imageObj, {});
-    img.scaleToWidth(500);
-    img.scaleToHeight(400);
+    img.scaleToWidth(1250);
+    img.scaleToHeight(1000);
     this.canvas.add(img);
 
   }

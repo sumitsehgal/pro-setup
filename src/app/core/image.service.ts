@@ -42,13 +42,13 @@ export class ImageService {
     },
     {
       type: 'wall 1',
-      url: 'assets/images/p4.jpg',
+      url: 'assets/images/pattern.jpg',
       coords: null,
       size: null,
     },
     {
       type: 'wall 2',
-      url: 'assets/images/p3.jpg',
+      url: 'assets/images/pattern1.jpg',
       coords: null,
       size: null,
     },
