@@ -19,10 +19,10 @@
     <div class="img-edit">
         <button (click)="merge()">merge</button>
         <div class="selected-image">
-            <canvas id="canvas" width="850" height="500"></canvas>
+            <canvas id="canvas" width="650" height="500"></canvas>
         </div>
     </div>
-    <div class="img-settings"  *ngIf="selectedObj">
+    <div class="img-settings" *ngIf="canvas.getActiveObject()" >
         <div class="img-edit-list">
             <ul>
                 <li class="active"><a href="#"><i class="far fa-image"></i></a></li>
@@ -41,6 +41,30 @@
                 </div>
                 <div class="count"><span class="val">{{light}}</span>%</div>
             </div>
+
+
+            <div class="adjust">
+                <div style="display: block;">X-Skew&nbsp;</div>
+                
+                <div class="icon"><i class="fas fa-chess-board"></i></div>
+                <div class="range">
+                    <input class="slider" type="range" min="0" max="100" (change)="changeSkew()" [(ngModel)]="xSkew"  >
+                    <div class="fill" style="width: {{xSkew}}%;"></div>
+                </div>
+                <div class="count"><span class="val">{{xSkew}}</span>%</div>
+            </div>
+
+            <div class="adjust">
+                <div style="display: block;">Y-Skew&nbsp;</div>
+                
+                <div class="icon"><i class="fas fa-chess-board"></i></div>
+                <div class="range">
+                    <input class="slider" type="range" min="0" max="100" (change)="changeSkew()" [(ngModel)]="ySkew"  >
+                    <div class="fill" style="width: {{ySkew}}%;"></div>
+                </div>
+                <div class="count"><span class="val">{{ySkew}}</span>%</div>
+            </div>
+
 
         </div>
     </div>

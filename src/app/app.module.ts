@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { CoreModule } from './core/core.module';
 import { FabricComponent } from './fabric/fabric.component';
 import { NewFabricComponent } from './new-fabric/new-fabric.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NewFabricComponent } from './new-fabric/new-fabric.component';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     CoreModule
   ],
